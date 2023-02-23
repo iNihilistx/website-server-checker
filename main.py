@@ -1,7 +1,7 @@
 import customtkinter
 import tkinter as tk
 import urllib.request
-from urllib.error  import HTTPError, URLError
+from urllib.error  import URLError
 
 def test_connection():
 	customtkinter.set_appearance_mode("system")
@@ -19,11 +19,10 @@ def test_connection():
 		try:
 			status_code = urllib.request.urlopen(web).getcode()
 			server_is_up = status_code == 200
-			server_refused = 403
 			if server_is_up:
-				customtkinter.CTkLabel(app, text="Connection Established!").place(x=130, y=190)
+				up = customtkinter.CTkLabel(app, text="Connection Established!").place(x=130, y=190)
 		except URLError as error:
-			customtkinter.CTkLabel(app, text="Connection Refused!").place(x=130, y=190)
+			down = customtkinter.CTkLabel(app, text="Connection Refused!").place(x=130, y=190)
 
 	url = customtkinter.StringVar()
 	entry_text = customtkinter.CTkLabel(app, text="example: www.google.com")
